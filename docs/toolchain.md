@@ -1,15 +1,18 @@
-  # Erlang Toolchain
+# Erlang Toolchain
 
-  - State: scaffold-only next-20 prep
-  - Toolchain source: `built-in`
+- State: deterministic first tranche implemented locally
+- Toolchain source: `built-in`
 
-  ## Planned commands after promotion
-    - `erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().' -noshell`
+## Native commands
+- `erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().' -noshell`
 - `rebar3 version`
+- `python3 scripts/validate_scaffold.py`
+- `rebar3 eunit`
+- `rebar3 escriptize`
 
-  ## Scaffold-time checks
-  - `python3 scripts/validate_scaffold.py`
-  - `/nix/var/nix/profiles/default/bin/nix --extra-experimental-features 'nix-command flakes' flake lock`
+## Docker commands
+- `docker build -t erlang-stakeholder .`
+- `docker run --rm erlang-stakeholder --list-values`
 
-  ## Current limitation
-  - BEAM toolchain is already present.
+## Current limitation
+- The deterministic tranche is implemented; live-provider/runtime work remains deferred.

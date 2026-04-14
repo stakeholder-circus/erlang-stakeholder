@@ -5,11 +5,18 @@ on:
   pull_request:
 
 jobs:
-  scaffold-check:
+  native:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: '27.3'
+          rebar3-version: '3.24.0'
       - run: python3 scripts/validate_scaffold.py
+      - run: rebar3 eunit
+      - run: rebar3 escriptize
+      - run: ./_build/default/bin/erlang-stakeholder --list-values

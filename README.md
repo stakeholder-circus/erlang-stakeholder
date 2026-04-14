@@ -1,34 +1,36 @@
 > [!WARNING]
-> This repository is AI-assisted and manually reviewed. It is currently a local-only scaffold in the next-20 autonomous sprint.
+> This repository is AI-assisted and manually reviewed. It now carries the deterministic Erlang first-tranche implementation locally.
 
 # erlang-stakeholder
 
-Erlang scaffold under stakeholder-circus.
+Erlang deterministic parity port under stakeholder-circus.
 
 ## Status
-- Selected for the next-20 autonomous sprint.
-- Local-only scaffold; no upstream tracking and no publication yet.
-- Default branch remains `main`; active work happens on the repo-specific baseline branch.
-
-## Role
-- Deterministic full-parity target for the next-20 wave.
-- First tranche target is `classic-six + modern-core` with grouped fallback for later families.
+- Full dedicated `classic-six + modern-core` is implemented locally.
+- Later families are present as grouped fallback renderers.
 - Full live-provider/runtime support remains a required follow-on wave.
+- Local-only baseline branch remains unpublished with no upstream tracking.
 
-## Planned toolchain contract
-- Toolchain source: `built-in`
-- See [docs/toolchain.md](docs/toolchain.md) for exact prep commands.
+## Contract
+- `--list-values`
+- `--focus-family <family>`
+- `--output-format text|json`
+- `--seed <value>`
+- `--experimental-provider <provider>` fail-fast
+- orphan experimental flags fail fast
 
-## Current guardrail
-- Missing behavior must fail fast and be recorded in `GAPS.md`.
-- The scaffold baseline is authoritative until implementation starts.
-- BEAM toolchain is already present.
+## Local workflow
+```bash
+python3 scripts/validate_scaffold.py
+rebar3 eunit
+rebar3 escriptize
+./_build/default/bin/erlang-stakeholder --list-values
+```
 
 ## Documentation
 - [STATUS.md](STATUS.md)
 - [PARITY.md](PARITY.md)
 - [GAPS.md](GAPS.md)
-- [docs/remotes.md](docs/remotes.md)
-- [docs/provenance.md](docs/provenance.md)
 - [docs/toolchain.md](docs/toolchain.md)
+- [docs/provenance.md](docs/provenance.md)
 - [docs/traceability/first-push-families.md](docs/traceability/first-push-families.md)

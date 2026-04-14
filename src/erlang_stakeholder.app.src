@@ -1,0 +1,15 @@
+{application, erlang_stakeholder,
+ [{description, "Deterministic first-tranche stakeholder runner"},
+  {vsn, "0.1.0"},
+  {modules, [
+    erlang_stakeholder,
+    erlang_stakeholder_app,
+    erlang_stakeholder_catalog,
+    erlang_stakeholder_json,
+    erlang_stakeholder_runtime,
+    erlang_stakeholder_sup
+  ]},
+  {registered, []},
+  {applications, [kernel, stdlib]},
+  {mod, {erlang_stakeholder_app, []}},
+  {env, []}] }.

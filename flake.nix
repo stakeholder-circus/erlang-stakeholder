@@ -1,5 +1,5 @@
 {
-  description = "erlang-stakeholder scaffold";
+  description = "erlang-stakeholder deterministic tranche";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
   outputs = { self, nixpkgs }:
     let
@@ -11,9 +11,11 @@
         in {
           check = pkgs.writeShellApplication {
             name = "check";
-            runtimeInputs = [ pkgs.python3 ];
+            runtimeInputs = [ pkgs.python3 pkgs.rebar3 pkgs.erlang ];
             text = ''
               python3 scripts/validate_scaffold.py
+              rebar3 eunit
+              rebar3 escriptize
             '';
           };
           default = self.packages.${system}.check;

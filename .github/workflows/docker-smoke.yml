@@ -10,4 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: docker build -t erlang-stakeholder .
-      - run: docker run --rm erlang-stakeholder
+      - run: docker run --rm erlang-stakeholder --list-values
+      - run: docker run --rm erlang-stakeholder --output-format json --focus-family code_analyzer --seed 123
+      - run: docker run --rm erlang-stakeholder --output-format json --focus-family platform_engineering --seed 123
+      - run: |
+          set +e
+          docker run --rm erlang-stakeholder --experimental-provider local-demo
+          rc=$?
+          set -e
+          test "$rc" -eq 2

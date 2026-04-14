@@ -1,5 +1,5 @@
 - Repository: `erlang-stakeholder`
 - Upstream reference: `giacomo-b/rust-stakeholder`
 - Imported upstream history is preserved in git history.
-- New scaffold content is AI-assisted and manually reviewed.
+- Deterministic tranche content is AI-assisted and manually reviewed.
 - Attribution intent: preserve upstream MIT notice exactly and record later human-authored changes explicitly.
