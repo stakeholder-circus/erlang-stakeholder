@@ -6,6 +6,10 @@ parse_args_defaults_test() ->
     ?assertEqual(undefined, maps:get(focus_family, Opts)),
     ?assertEqual(text, maps:get(output_format, Opts)).
 
+parse_args_accepts_dashed_registry_family_test() ->
+    {ok, Opts} = erlang_stakeholder:parse_args(["--focus-family", "platform-engineering"]),
+    ?assertEqual(platform_engineering, maps:get(focus_family, Opts)).
+
 list_values_contains_renderer_metadata_test() ->
     Values = erlang_stakeholder_runtime:list_values_json(),
     Families = maps:get(<<"generatorFamilies">>, Values),

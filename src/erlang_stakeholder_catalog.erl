@@ -61,7 +61,7 @@ later_fallback() ->
     ].
 
 family_label(Family) ->
-    string:replace(atom_to_list(Family), "_", "-", all).
+    lists:flatten(string:replace(atom_to_list(Family), "_", "-", all)).
 
 normalize_family(Value) when is_atom(Value) ->
     case lists:member(Value, all_generator_families()) of

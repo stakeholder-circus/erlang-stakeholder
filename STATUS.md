@@ -2,12 +2,20 @@
 
 - Role: tranche-A deterministic Erlang parity port
 - Parity class: full-parity
-- State: implemented-local-validated-pending-commit-proof
-- Rewrite completeness: 68%
-- Functionality completeness: 52%
+- State: native-validated local deterministic tranche
+- Rewrite completeness: 72%
+- Functionality completeness: 56%
 - Branch: `main`
 - Origin: `git@github.com:stakeholder-circus/erlang-stakeholder.git`
 - Upstream: `https://github.com/giacomo-b/rust-stakeholder`
+
+## Evidence
+- `python3 scripts/validate_scaffold.py`
+- `rebar3 eunit`
+- `rebar3 escriptize`
+- `./_build/default/bin/erlang-stakeholder --list-values`
+- same-seed deterministic JSON diff for `platform-engineering` dashed registry id
+- explicit `--experimental-provider local-demo` fail-fast smoke
 
 ## Blockers
 - Full live-provider/runtime support is deferred to the second-pass provider rollout wave.
