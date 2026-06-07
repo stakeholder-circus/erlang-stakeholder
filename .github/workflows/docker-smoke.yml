@@ -8,7 +8,7 @@ jobs:
   docker-smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: docker build -t erlang-stakeholder .
       - run: docker run --rm erlang-stakeholder --list-values
       - run: docker run --rm erlang-stakeholder --output-format json --focus-family code_analyzer --seed 123
